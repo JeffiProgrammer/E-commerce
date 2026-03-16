@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Vazirmatn:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-vazir: "Vazirmatn", sans-serif;
+}
+
+/* Explicitly handle dark mode class for Tailwind 4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  .rtl {
+    direction: rtl;
+    font-family: var(--font-vazir), "Vazirmatn", sans-serif;
+  }
+  
+  .ltr {
+    direction: ltr;
+    font-family: var(--font-sans), sans-serif;
+  }
+
+  select option {
+    @apply bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100;
+  }
+}
+
+body {
+  @apply antialiased bg-stone-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 transition-colors duration-300;
+}
